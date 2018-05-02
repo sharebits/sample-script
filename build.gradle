@@ -1,0 +1,16 @@
+group 'org.beyondbitcoin'
+version '0.1'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+jar {
+    archiveName = 'eosbits4sharing.jar'
+}
