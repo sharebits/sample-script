@@ -1,4 +1,4 @@
-package org.beyondbitcoin;
+package io.sharebits;
 
 /**
  * @author Armin Naderi.

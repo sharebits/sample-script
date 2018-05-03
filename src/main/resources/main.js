@@ -1,6 +1,7 @@
 function isCompleted(user) {
-    java.lang.System.exit(1);
-    var Hello = Java.type('org.beyondbitcoin.HelloWorld');
+    print("Hello World");
+    throw new Error("this is an error");
+    var Hello = Java.type('io.sharebits.HelloWorld');
     var hello = new Hello();
     print(hello.getClass());
     return true;
