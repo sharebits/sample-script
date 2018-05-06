@@ -1,15 +1,25 @@
 ## Script Format
 
-There two hard requirements that you need to keep in mind when developing scripts:
+There are two hard requirements that you need to keep in mind when developing scripts:
 
 * All of the script files must be bundled inside a JAR file
 * The JAR must contain a Javascript file called `main.js` within the **root of the classpath** that implements the
  following functions:
 
 ```
-function isCompleted(user): Boolean
+function isCompleted(user: User): Boolean
 function getAbout(): String
 function getDescription(): String
+```
+
+The `User` class has the following definition:
+
+```
+class User {
+    username: String;
+    firstName: String;
+    lastName: String;
+}
 ```
 
 You are welcome to use Java libraries and import them using the Nashorn Javascript syntax, however be aware that you
@@ -29,13 +39,14 @@ section.
 Then, set a couple of dynamic environment variables that are dependent on your use case:
 
 ```
-PATH_TO_JAR=`example.jar`
+PATH_TO_JAR='example.jar'
 SHAREBOT_SERVER='example.com'
+ACCESS_TOKEN='F4494CBFCF42B4...'
 ```
 
 Finally, upload your JAR to the respective sharebot server using this command: 
 
-`curl --insecure --header "Content-Type:application/octet-stream" --data-binary @$PATH_TO_JAR https://$SHAREBOT_SERVER:8443/upload`
+`curl --insecure -i --header "Authorization: Bearer $ACCESS_TOKEN" --header "Content-Type:application/octet-stream" --data-binary @$PATH_TO_JAR https://$SHAREBOT_SERVER:8443/upload`
 
 If you did not receive any errors during the file upload, the sharebot should have processed your script and is ready
 to execute it. Try out some commands to see if it's working!
